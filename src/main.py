@@ -33,6 +33,7 @@ from engine import single_image_inference, LabelSmoothing, run_epochs,get_memory
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--source", type=str, required=True)
+    parser.add_argument("--raw_path", type=str, required=True)
 
     parser.add_argument("--transform", action="store_true", default=False)
     parser.add_argument("--image", type=str, default="")
@@ -50,7 +51,7 @@ if __name__ == "__main__":
     
     args = parser.parse_args()
 
-    raw_path = os.path.join("..", "raw", args.source)
+    raw_path = args.raw_path
     source_path = os.path.join("..", "data", f"{args.source}.hdf5")
     output_path = os.path.join("..", "output", args.source,)
     target_path = os.path.join(output_path, "checkpoint_weights.pt")
