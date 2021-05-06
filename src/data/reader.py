@@ -97,12 +97,12 @@ class Dataset():
     def _iam(self):
         """IAM dataset reader"""
 
-        pt_path = os.path.join(self.source, "largeWriterIndependentTextLineRecognitionTask")
-        paths = {"train": open(os.path.join(pt_path, "trainset.txt")).read().splitlines(),
-                 "valid": open(os.path.join(pt_path, "validationset1.txt")).read().splitlines(),
-                 "test": open(os.path.join(pt_path, "testset.txt")).read().splitlines()}
+        pt_path = os.path.join(self.source, "splits")
+        paths = {"train": open(os.path.join(pt_path, "train.uttlist")).read().splitlines(),
+                 "valid": open(os.path.join(pt_path, "validation.uttlist")).read().splitlines(),
+                 "test": open(os.path.join(pt_path, "test.uttlist")).read().splitlines()}
 
-        lines = open(os.path.join(self.source, "ascii", "lines.txt")).read().splitlines()
+        lines = open(os.path.join(self.source, "lines.txt")).read().splitlines()
         gt_dict = dict()
 
         for line in lines:
